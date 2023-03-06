@@ -644,15 +644,15 @@ quiet_cmd_makefile = GEN     Makefile
 	} > Makefile
 
 outputmakefile:
-	@if [ -f $(srctree)/.config -o \
-		 -d $(srctree)/include/config -o \
-		 -d $(srctree)/arch/$(SRCARCH)/include/generated ]; then \
-		echo >&2 "***"; \
-		echo >&2 "*** The source tree is not clean, please run 'make$(if $(findstring command line, $(origin ARCH)), ARCH=$(ARCH)) mrproper'"; \
-		echo >&2 "*** in $(abs_srctree)";\
-		echo >&2 "***"; \
-		false; \
-	fi
+#	@if [ -f $(srctree)/.config -o \
+#		 -d $(srctree)/include/config -o \
+#		 -d $(srctree)/arch/$(SRCARCH)/include/generated ]; then \
+#		echo >&2 "***"; \
+#		echo >&2 "*** The source tree is not clean, please run 'make$(if $(findstring command line, $(origin ARCH)), ARCH=$(ARCH)) mrproper'"; \
+#		echo >&2 "*** in $(abs_srctree)";\
+#		echo >&2 "***"; \
+#		false; \
+#	fi
 	$(Q)ln -fsn $(srctree) source
 	$(call cmd,makefile)
 	$(Q)test -e .gitignore || \
