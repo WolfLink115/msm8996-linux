@@ -1,0 +1,52 @@
+// SPDX-License-Identifier: BSD-3-Clause
+
+/dts-v1/;
+
+#include "msm8996pro.dtsi"
+#include "pm8994.dtsi"
+#include "pmi8994.dtsi"
+#include "pmi8996.dtsi"
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+#include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
+
+/ {
+	model = "Oculus Pacific EVT";
+	compatible = "qcom,apq8096-cdp", "qcom,apq8096", "qcom,cdp";
+	qcom,msm-id = <312 0x10001>;
+	qcom,board-id = <1 0>, <0x01000001 0>;
+
+	chosen {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		framebuffer0: framebuffer@83401000 {
+			compatible = "simple-framebuffer";
+			reg = <0x00 0x83401000 0x00 0x546000>;
+			width = <1280>;
+			height = <1440>;
+			stride = <4320>;
+			format = "r8g8b8";
+		};
+	};
+
+	reserved-memory {
+		cont_splash_mem: memory@83401000 {
+			reg = <0x0 0x83401000 0x0 0x23FF000>;
+			no-map;
+		};
+	};
+};
+
+&blsp2_uart2 {
+	status = "okay";
+};
+
+&mdss_hdmi {
+	status = "okay";
+};
+
+&mdss_hdmi_phy {
+	status = "okay";
+};
